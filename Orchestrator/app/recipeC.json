@@ -1,0 +1,8 @@
+{
+"app_name": "test1",
+"app" :"simple-project_2.12-1.0.jar",
+"projects":{
+"028b0486a38525a7b5d0108725b2b94abdbed409" : {"language_type":""}
+            },
+ "rules" : {"num_slave":2 , "dstream_time": 1000}
+}

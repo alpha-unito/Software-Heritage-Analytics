@@ -1,0 +1,8 @@
+
+python3 pycachemire.py
+
+python3 dashboardclient.py -p 4320 -a 127.0.0.1 -r app/recipeA.json
+
+python3 sparkclient.py -p 4321 -a 127.0.0.1
+
+

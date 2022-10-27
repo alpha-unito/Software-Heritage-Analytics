@@ -1,0 +1,28 @@
+{
+ "app" :"simple-project_2.12-1.0.jar",
+ "projects":{
+    
+                "ee08614e6ee4ec4659b8d43c4bb3be1d72e2e058" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e3891850951" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfba" : {"language_type":"Python"},
+		"ee08614e6ee4ec4659b8d43c4bb3be1d72e2e052" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e3891850953" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfb4" : {"language_type":"Python"},
+		"ee08614e6ee4ec4659b8d43c4bb3be1d72e2e055" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e3891850956" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfb7" : {"language_type":"Python"},
+		"ee08614e6ee4ec4659b8d43c4bb3be1d72e2e059" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e389185095b" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfbc" : {"language_type":"Python"},
+		"ee08614e6ee4ec4659b8d43c4bb3be1d72e2e05d" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e389185095e" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfbf" : {"language_type":"Python"},
+		"ee08614e6ee4ec4659b8d43c4bb3be1d72e2e05g" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e389185095h" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfbi" : {"language_type":"Python"},
+		"ee08614e6ee4ec4659b8d43c4bb3be1d72e2e05l" : {"language_type":"Python"},
+                "88d1ca4e1402b1ef265cd5074f224e3891850951" : {"language_type":"Python"},
+                "129a63cd64d93db0bd144aebbf4ce7dd5d44cfbm" : {"language_type":"Python"}
+            },
+ "rules" : {"num_slave":2 , "dstream_time": 1000}
+}

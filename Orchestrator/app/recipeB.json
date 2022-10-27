@@ -1,0 +1,18 @@
+{
+"app_name": "test1",
+"app" :"simple-project_2.12-1.0.jar",
+"projects":{
+"028b0486a38525a7b5d0108725b2b94abdbed409" : {"language_type":""},
+"3b2caeea51d34f766f5fcef27a9770323c9aa60f" : {"language_type":""},
+"61b3733be05b2c986c8797ef8fabf09976151eb2" : {"language_type":""},
+"0529771a960cd823d20e5d28617ffa8f0fc060ac" : {"language_type":""},
+"e86b3135ff4452997a55f231212a3fb6e5f8aa9d" : {"language_type":""},
+"4780f204730186a5421851d404872910f3e6b5e3" : {"language_type":""},
+"bf79c49fd9440c4a7e554b0315d0e6e14ca71fd9" : {"language_type":""},
+"21d03bee59d127f9b9572ca8d3ca0c0f0dba846a" : {"language_type":""},
+"ebe7c2e1193a5518fffbf0a09bb54c80937e0e23" : {"language_type":""},
+"266b4ea87d2ac441bc02ad2c4ba2c4f332c7c0ce": {
+            "language_type": ""}
+},
+ "rules" : {"num_slave":2 , "dstream_time": 1000}
+}

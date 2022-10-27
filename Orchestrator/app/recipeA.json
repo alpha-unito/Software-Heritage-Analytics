@@ -1,0 +1,8 @@
+{
+ "app" :"simple-project_2.12-1.0.jar",
+ "projects":{
+    
+                "4dc3b9d41a65de6972ad76389177bea46442ada9" : {"language_type":"C"}
+            },
+ "rules" : {"num_slave":2 , "dstream_time": 1000}
+}
