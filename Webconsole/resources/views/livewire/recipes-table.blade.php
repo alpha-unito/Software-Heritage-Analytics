@@ -3,6 +3,7 @@
         <x-slot name="head">
             <x-table.heading sortable>{{ __('Name') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Tags') }}</x-table.heading>
+            <x-table.heading class="whitespace-nowrap" sortable>{{ __('Creation Date') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Description') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Action') }}</x-table.heading>
         </x-slot>
@@ -27,6 +28,9 @@
                                 @endforeach
                             </div>
                         @endif
+                    </x-table.cell>
+                    <x-table.cell>
+                        {{ $recipe->created_at->format("m/d/Y") }}
                     </x-table.cell>
                     <x-table.cell class="w-full">
                         {{ $recipe->description }}
