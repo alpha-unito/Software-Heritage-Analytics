@@ -1,4 +1,4 @@
-<div x-data="" wire:poll.5s>
+<div x-data="" wire:poll.1s>
     <x-table>
         <x-slot name="head">
             <x-table.heading sortable>{{ __('Application') }}</x-table.heading>
