@@ -18,7 +18,7 @@
                             </label>
                         </div>
                     </x-table.cell>
-                    <x-table.cell>
+                    <x-table.cell class="whitespace-nowrap">
                         @if ($application->tags && count($application->tags) > 0)
                             <div class="flex flex-row space-x-2">
                                 @foreach ($application->tags as $tag)
