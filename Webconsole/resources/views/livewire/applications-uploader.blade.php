@@ -3,6 +3,8 @@
         <x-slot name="head">
             <x-table.heading sortable>{{ __('Name') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Tags') }}</x-table.heading>
+            <x-table.heading sortable>{{ __('Class') }}</x-table.heading>
+            <x-table.heading class="whitespace-nowrap" sortable>{{ __('Creation Date') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Description') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Action') }}</x-table.heading>
         </x-slot>
@@ -27,6 +29,12 @@
                                 @endforeach
                             </div>
                         @endif
+                    </x-table.cell>
+                    <x-table.cell>
+                        {{ $application->application_class }}
+                    </x-table.cell>
+                    <x-table.cell>
+                        {{ $application->created_at->format("m/d/Y") }}
                     </x-table.cell>
                     <x-table.cell class="w-full">
                         {{ $application->description }}
@@ -64,7 +72,7 @@
         </x-slot>
     </x-table>
 
-    <x-modal @add-application-item.window="show= true" x-data="{ show: false, name: '', file: '', uploaded: false, uploadedFiles: [], saved: false }" @close-modal.window="show = false"
+    <x-modal @add-application-item.window="show= true" x-data="{ show: false, name: '', application_class: '', file: '', uploaded: false, uploadedFiles: [], saved: false }" @close-modal.window="show = false"
         x-show="show" wire:ignore>
         <x-slot name="icon">
         </x-slot>
@@ -96,6 +104,15 @@
                         id="description"
                         class="block w-full p-0 text-gray-900 placeholder-gray-500 border-0 focus:ring-0 sm:text-sm"
                         placeholder="{{ __('Application description') }}">
+                </div>
+                <div
+                    class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:ring-1 focus-within:ring-red-600 focus-within:border-red-600">
+                    <label for="application_class"
+                        class="absolute inline-block px-1 -mt-px text-xs font-medium text-gray-900 bg-white -top-2 left-2">Application Class</label>
+                    <input x-bind:disabled="saved" wire:model="application_class" type="text" name="application_class"
+                        id="application_class"
+                        class="block w-full p-0 text-gray-900 placeholder-gray-500 border-0 focus:ring-0 sm:text-sm"
+                        placeholder="{{ __('Application class') }}">
                 </div>
                 <div
                     class="relative px-3 py-2 border border-gray-300 rounded-md shadow-sm focus-within:ring-1 focus-within:ring-red-600 focus-within:border-red-600">

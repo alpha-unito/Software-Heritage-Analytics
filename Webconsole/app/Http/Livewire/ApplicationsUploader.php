@@ -17,6 +17,7 @@ class ApplicationsUploader extends Component
     public $tags;
     public $description;
     public $name;
+    public $application_class;
     public $enableButton = false;
     public $iteration = 0;
 
@@ -47,6 +48,7 @@ class ApplicationsUploader extends Component
             $application = Application::make();
             $application->name = $this->name;
             $application->description = $this->description;
+            $application->application_class = $this->application_class;
             $application->tags = array_filter(explode(",", str_replace(' ', '', $this->tags)));
             $application->user()->associate(auth()->user());
             $application->save();
@@ -60,6 +62,7 @@ class ApplicationsUploader extends Component
         $this->tags = null;
         $this->description = null;
         $this->name = null;
+        $this->application_class = null;
         return true;
     }
 }
