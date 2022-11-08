@@ -19,6 +19,13 @@ class RunController extends Controller
         return view('runs.create');
     }
 
+    public function inspect(Run $run)
+    {
+        $output = file_get_contents($run->path, FALSE);
+        $output = str_replace(" ", "&nbsp;", $output);
+        return view('runs.inspect', ['output' => $output]);
+    }
+
     public function store(Request $request) {
         $run = Run::make();
         $run->settings = $request->input('settings');

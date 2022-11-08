@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\RunController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +42,11 @@ Route::middleware([
     Route::get('/runs', [RunController::class, 'index'])->name('run.index');
     Route::get('/runs/create', [RunController::class, 'create'])->name('run.create');
     Route::post('/runs/create', [RunController::class, 'store'])->name('run.store');
-    Route::get('/run', function () {
+    Route::get('/runs/{run}/inspect', [RunController::class, 'inspect'])->name('run.inspect');
+    Route::get('/run', function (Request $request) {
         // $exitCode = Artisan::call('spark:submit', []);
-        \App\Jobs\SparkSubmitJob::dispatch('test');
+        \App\Jobs\SparkSubmitJob::dispatch($request->input());
+        sleep(2);
         return redirect()->route('run.index');
     })->name('run.spark');
 });

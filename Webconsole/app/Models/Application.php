@@ -28,6 +28,10 @@ class Application extends Model
         return Storage::disk('local')->download('applications/'.$this->uuid, $this->name.".jar");
     }
 
+    public function fullPath() {
+        return Storage::disk('local')->getAdapter()->applyPathPrefix('applications/'.$this->uuid);
+    }
+
     public function user() {
         return $this->belongsTo(User::class);
     }

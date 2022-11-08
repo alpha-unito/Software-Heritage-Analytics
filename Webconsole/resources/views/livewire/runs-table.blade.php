@@ -28,12 +28,28 @@
                     </x-table.cell>
                     <x-table.cell>
                         <div class="flex flex-row space-x-2">
+                            @if(is_null($run->job_id))
                             <x-button wire:click="run({{ $run->id }})" type="button" color="green">
                                 <div class="flex flex-row space-x-2 place-items-center">
                                     <x-icon-play class="w-3 font-green-700" />
-                                    <label>Run</label>
+                                    <div>Run</div>
                                 </div>
                             </x-button>
+                            @elseif(is_null($run->path))
+                            <div class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-green-700 bg-white border border-green-300 rounded-md shadow-sm">
+                                <div class="flex flex-row space-x-2 place-items-center">
+                                    <x-icon-loading class="w-4 font-green-700 animate-spin" />
+                                    <div>Calculating</div>
+                                </div>
+                            </div>
+                            @else
+                            <x-button wire:click="inspect({{ $run->id }})" type="button" color="green">
+                                <div class="flex flex-row space-x-2 place-items-center">
+                                    <x-icon-inspect class="w-4 font-green-700" />
+                                    <div>Inspect</div>
+                                </div>
+                            </x-button>
+                            @endif
                             <x-button type="button"
                                 x-on:click="$wire.delete({{ $run->id }}); $dispatch('delete-alert', {id: {{ $run->id }}})"
                                 color="red">

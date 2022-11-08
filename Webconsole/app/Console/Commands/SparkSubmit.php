@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Run;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
+use Illuminate\Support\Facades\Http;
 
 class SparkSubmit extends Command
 {
@@ -13,7 +15,7 @@ class SparkSubmit extends Command
      *
      * @var string
      */
-    protected $signature = 'spark:submit';
+    protected $signature = 'spark:submit {jar} {application} {run}';
 
     /**
      * The console command description.
@@ -39,18 +41,33 @@ class SparkSubmit extends Command
      */
     public function handle()
     {
-        $arguments = $this->arguments();
+        // Send Recipes
+        $response = Http::contentType("application/json")->post('http://127.0.0.1:5000/test', [
+            'body' => ['test' => 'prova']
+        ]);
 
-        // $process = new Process(['/home/xtrust/lab/spark/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  'app1', '--class',  'SampleApp', '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '1', '--deploy-mode', 'client', '/home/xtrust/lab/spark/sparking/scala/test_t/target/scala-2.12/simple-project_2.12-1.0.jar' ,'1', '127.0.0.1', '9999', '1']);
-        $process = new Process(['ls', '-la']);
+        $arguments = $this->arguments();
+        $jar = $arguments['jar'];
+        $application = $arguments['application'];
+        $run_id = $arguments['run'];
+
+        $run = Run::find($run_id);
+
+
+        $process = new Process(['/root/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  $application, '--class',  'SimpleApp', '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '2', '--deploy-mode', 'client', $jar ,'1', '127.0.0.1', '9999', '1']);
         $process->run();
+
         // executes after the command finishes
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
-        $this->info($process->getOutput());
-        $this->info('finito');
-        sleep(5);
-        // return $ret;
+
+        $path = "/root/lab/Software-Heritage-Analytics/Webconsole/tmp/".$run->job_id.".txt";
+        $file = fopen($path, "w");
+        fwrite($file, $process->getOutput());
+        fclose($file);
+        $run->path = $path;
+        $run->save();
+        
     }
 }

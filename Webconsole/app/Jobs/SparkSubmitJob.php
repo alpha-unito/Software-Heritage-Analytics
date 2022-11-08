@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Console\Commands\SparkSubmit;
+use App\Models\Run;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,6 +16,8 @@ class SparkSubmitJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $details;
+    public $timeout = 0;
+
     /**
      * Create a new job instance.
      *
@@ -32,10 +35,11 @@ class SparkSubmitJob implements ShouldQueue
      */
     public function handle()
     {
-        print($this->job->getJobId());
-        print('HANDLER');
-        Artisan::call('spark:submit', []);
-        // dd(Artisan::output());
-        return Artisan::output();
+        // print($this->job->getJobId().PHP_EOL);
+
+        $run = Run::find($this->details['run']);
+        $run->job_id = intval($this->job->getJobId());
+        $run->save();
+        Artisan::call('spark:submit', ['jar' => $this->details['jar'], 'application' => $this->details['application_name'], 'run' => $run->id]);
     }
 }
