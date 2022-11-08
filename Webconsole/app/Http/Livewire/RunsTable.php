@@ -9,7 +9,7 @@ class RunsTable extends Component
 {
     public function render()
     {
-        $runs = Run::all();
+        $runs = Run::orderby('created_at', 'DESC')->get();
         return view('livewire.runs-table', ['runs' => $runs]);
     }
 
