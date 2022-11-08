@@ -11,6 +11,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Artisan;
+use Carbon\Carbon;
+
 
 class SparkSubmitJob implements ShouldQueue
 {
@@ -39,6 +41,7 @@ class SparkSubmitJob implements ShouldQueue
 
         $run = Run::find($this->details['run']);
         $run->job_id = intval($this->job->getJobId());
+        $run->execution_time = Carbon::now();
         $run->save();
         Artisan::call('spark:submit', ['jar' => $this->details['jar'], 'application' => $this->details['application_name'], 'run' => $run->id]);
     }

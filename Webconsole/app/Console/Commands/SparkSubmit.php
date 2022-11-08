@@ -7,6 +7,8 @@ use App\Models\Run;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
+
 
 class SparkSubmit extends Command
 {
@@ -67,7 +69,8 @@ class SparkSubmit extends Command
         fwrite($file, $process->getOutput());
         fclose($file);
         $run->path = $path;
+        $run->execution_time =  Carbon::parse(gmdate("H:i:s", Carbon::now()->diffInSeconds($run->execution_time)));
         $run->save();
-        
+        $this->emitTo('refreshProducts', $productID);
     }
 }

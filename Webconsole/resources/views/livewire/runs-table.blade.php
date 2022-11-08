@@ -1,9 +1,10 @@
-<div x-data={}>
+<div x-data="" wire:poll.5s>
     <x-table>
         <x-slot name="head">
             <x-table.heading sortable>{{ __('Application') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Recipe') }}</x-table.heading>
             <x-table.heading class="whitespace-nowrap" sortable>{{ __('Creation Date') }}</x-table.heading>
+            <x-table.heading class="whitespace-nowrap" sortable>{{ __('Evaluation Date') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Settings') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Action') }}</x-table.heading>
         </x-slot>
@@ -24,9 +25,14 @@
                             </label>
                         </div>
                     </x-table.cell>
-                    <x-table.cell>
+                    <x-table.cell class="whitespace-nowrap">
                         {{ $run->created_at->format("m/d/Y") }}
                     </x-table.cell>
+                    <x-table.cell  class="whitespace-nowrap">
+                        @if($run->path != '')
+                            {{ explode(' ',$run->execution_time)[1] }}
+                        @endif
+                    </x-table.cell>                    
                     <x-table.cell class="w-full">
                         {{ $run->settings }}
                     </x-table.cell>
