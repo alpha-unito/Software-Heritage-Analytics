@@ -13,7 +13,7 @@ _CONFIG = {
         "send_sleep_debug": 0.0001,
         "num_max_app_client": 5,
         "default_cache_ip": "127.0.0.1",
-	    "default_cache_ip_": "192.168.111.11",
+	"default_cache_ip_": "192.168.111.11",
         "default_cache_port": 13000,
         "max_num_cache_request": 0,
         "ratio_spark_thread_cache_request": 2

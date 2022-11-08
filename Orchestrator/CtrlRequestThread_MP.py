@@ -55,7 +55,9 @@ class CtrlRequestThread():
   #      pytau.start(self.tau_profile)
         pid = os.getpid()
         print(f"[+] New CTRL process pid: {os.getpid()}")
-        self.recipe = json.loads(self.conn.recv(_CONFIG["buffer_size"]))
+        stringa = self.conn.recv(_CONFIG["buffer_size"]).decode("utf-8")
+        print(stringa)
+        self.recipe = json.loads(stringa)
 
         self.logging = logger = Logger(self.recipe["app_name"])
         self.logging.debug("[+] Recipe received from Dashboard: ", self.recipe)
