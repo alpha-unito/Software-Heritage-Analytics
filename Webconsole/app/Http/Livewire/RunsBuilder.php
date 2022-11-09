@@ -16,6 +16,7 @@ class RunsBuilder extends Component
 
     public function render()
     {
+        $this->settings = sprintf("{\n\t%s:%d,\n\t%s:%d\n}","\"num_slave\"",2,"\"dstream_time\"", 1000);
         $applications = Application::all()->where('user_id', Auth()->user()->id);
         $recipes = Recipe::all()->where('user_id', Auth()->user()->id);
         return view('livewire.runs-builder', ['applications' => $applications, 'recipes' => $recipes]);
