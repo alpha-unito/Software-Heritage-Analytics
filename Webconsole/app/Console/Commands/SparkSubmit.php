@@ -71,6 +71,5 @@ class SparkSubmit extends Command
         $run->path = $path;
         $run->execution_time =  Carbon::parse(gmdate("H:i:s", Carbon::now()->diffInSeconds($run->execution_time)));
         $run->save();
-        $this->emitTo('refreshProducts', $productID);
     }
 }
