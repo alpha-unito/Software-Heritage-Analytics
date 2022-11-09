@@ -17,7 +17,7 @@ class SparkSubmit extends Command
      *
      * @var string
      */
-    protected $signature = 'spark:submit {jar} {app} {run}';
+    protected $signature = 'spark:submit {jar} {app} {app_name} {run}';
 
     /**
      * The console command description.
@@ -50,13 +50,14 @@ class SparkSubmit extends Command
 
         $arguments = $this->arguments();
         $jar = $arguments['jar'];
-        $application = $arguments['app'];
+        $app_name = $arguments['app_name'];
+        $app = $arguments['app'];
         $run_id = $arguments['run'];
 
         $run = Run::find($run_id);
 
 
-        $process = new Process(['/root/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  $application, '--class',  'SimpleApp', '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '2', '--deploy-mode', 'client', $jar ,'1', '127.0.0.1', '9999', '1']);
+        $process = new Process(['/root/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  $app_name, '--class',  $app, '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '2', '--deploy-mode', 'client', $jar ,'1', '127.0.0.1', '9999', '1']);
         $process->run();
 
         // executes after the command finishes
