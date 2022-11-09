@@ -20,12 +20,13 @@ class RunsTable extends Component
     public function run(Run $run){
         // $run->run();
         $application_name = $run->application->name;
+        $app = $run->application->application_class;
+        $projects = $run->recipe->data;
         $jar = $run->application->fullPath();
-        return redirect()->route('run.spark', ['run' => $run->id, 'jar' => $jar, 'application_name' => $application_name]);
+        return redirect()->route('run.spark', ['run' => $run->id, 'jar' => $jar, 'app_name' => $application_name, 'app' => $app, 'projects' => $projects, 'rules' => $run->settings]);
     }
 
     public function inspect(Run $run){
-        // dd($run->path);
         return redirect()->route('run.inspect', ['run' => $run->id]);
     }
 }
