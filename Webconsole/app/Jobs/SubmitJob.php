@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Artisan;
 use Carbon\Carbon;
 
 
-class SparkSubmitJob implements ShouldQueue
+class SubmitJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $details;
