@@ -17,7 +17,7 @@ class SparkSubmit extends Command
      *
      * @var string
      */
-    protected $signature = 'spark:submit {jar} {application} {run}';
+    protected $signature = 'spark:submit {jar} {app} {run}';
 
     /**
      * The console command description.
@@ -50,7 +50,7 @@ class SparkSubmit extends Command
 
         $arguments = $this->arguments();
         $jar = $arguments['jar'];
-        $application = $arguments['application'];
+        $application = $arguments['app'];
         $run_id = $arguments['run'];
 
         $run = Run::find($run_id);
