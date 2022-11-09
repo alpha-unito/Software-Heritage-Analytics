@@ -45,7 +45,7 @@ Route::middleware([
     Route::get('/runs/{run}/inspect', [RunController::class, 'inspect'])->name('run.inspect');
     Route::get('/run', function (Request $request) {
         // $exitCode = Artisan::call('spark:submit', []);
-        \App\Jobs\SparkSubmitJob::dispatch($request->input());
+        \App\Jobs\SubmitJob::dispatch($request->input());
         sleep(2);
         return redirect()->route('run.index');
     })->name('run.spark');
