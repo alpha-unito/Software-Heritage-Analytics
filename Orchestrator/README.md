@@ -7,6 +7,7 @@ The orchestrator can handle multiple streams of data to supply multiple applicat
 
 A recipe is a simple json file. This is an example of a recipe:
 
+``` json
 {
 	"app_name": "test1",
 	"app" :"simple-project_2.12-1.0.jar",
@@ -24,7 +25,7 @@ A recipe is a simple json file. This is an example of a recipe:
 	},
 	"rules" : {"num_slave":2 , "dstream_time": 1000}
 }
- 
+```
 
 app_name: Unique app identifier when APP is running
 app: specifies the jar package in which the code (scale) of the APP is contained
@@ -34,7 +35,7 @@ rules: groups parmaeters regarding the app's performance at runtime, such as num
 
 The json language_extensions.py file lists all the recognized file formats to do filtering of the files contained in the projects. Below is an example of how to specify a new extension for a language:
 
-
+``` json
   {
       "name": "language_name",
       "type": "little_description",
@@ -44,10 +45,11 @@ The json language_extensions.py file lists all the recognized file formats to do
          ".extension_3"
       ]
    }
-
+```
 
 The orchestrator module is a daemon server that is listening on a specific port (default: 4320). The server can be configured by means of the file config.py ch which contains a number of parameters specified below:
 
+``` json
 _CONFIG = {
         "port": 4320,
 		"bind_address" : "0.0.0.0",
@@ -64,7 +66,8 @@ _CONFIG = {
         "max_num_cache_request": 0,
         "ratio_spark_thread_cache_request": 2
         }
-		
+```
+
 To install the server, simply clone this project, edit the configuration file and run with the following command
 
 python3 pycachemire
