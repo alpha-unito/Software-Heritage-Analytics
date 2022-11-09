@@ -100,7 +100,7 @@ PyCachemire server : Waiting for connections from Dashboard clients on port 4320
 
 The dashboard.py script can be used to run an analysis application. The script provides the following commands: 
 
-```
+``` python3
 python3 dashboardclient.py -h
 usage: dashboardclient.py [-h] [-a A] [-p P] [-r R] [-n N] [-d [D]] [-m M] [-e E]
 
@@ -117,6 +117,6 @@ optional arguments:
 
 This is an example for run application:
 
-```
+``` python3
 python3 dashboardclient.py -a 127.0.0.1 -p 4320 -m 127.0.0.1 -r app/recipe0.json
 ```
