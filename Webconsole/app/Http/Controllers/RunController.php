@@ -28,6 +28,7 @@ class RunController extends Controller
 
     public function store(Request $request) {
         $run = Run::make();
+        $run->language = $request->input('language');
         $run->settings = $request->input('settings');
         $run->user()->associate(Auth()->user());
         $run->recipe()->associate($request->input('recipe'));

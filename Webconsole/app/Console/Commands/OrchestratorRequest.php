@@ -46,8 +46,6 @@ class OrchestratorRequest extends Command
         $app = $arguments['app'];
         $rules = $arguments['rules'];
         $projects = $arguments['projects'];
-        $run = Run::find($run)->first();
-
         $address = 'localhost';
         $service_port = 4320;
 
@@ -77,7 +75,7 @@ class OrchestratorRequest extends Command
         $projects_string = '{';
         foreach ($projects as $key=>$project){
             if($key != 0) $projects_string = $projects_string.',' ;
-            $projects_string = $projects_string."\"".$project."\":{\"language_type\":\"C++\"}";
+            $projects_string = "$projects_string\"$project\":{\"language_type\":\"$run->language\"}";
         }
         $projects_string = $projects_string.'}';
 

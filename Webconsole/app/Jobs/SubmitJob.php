@@ -42,9 +42,9 @@ class SubmitJob implements ShouldQueue
         $run->job_id = intval($this->job->getJobId());
         $run->execution_time = Carbon::now();
         $run->save();
-        Artisan::call('orchestrator:request', ['run'=> $run->id, 'app_name' => $this->details['app_name'], 'app' => $this->details['app'], 'rules' => $this->details['rules'], 'projects' => $this->details['projects'] ?? []]);
+        Artisan::call('orchestrator:request', ['run'=> $run, 'app_name' => $this->details['app_name'], 'app' => $this->details['app'], 'rules' => $this->details['rules'], 'projects' => $this->details['projects'] ?? []]);
         $run = $run->fresh();
         if ($run->info != "ERROR")
-            Artisan::call('spark:submit', ['jar' => $this->details['jar'], 'app' => $this->details['app'], 'app_name' => $this->details['app_name'], 'run' => $run->id]);
+            Artisan::call('spark:submit', ['jar' => $this->details['jar'], 'app' => $this->details['app'], 'app_name' => $this->details['app_name'], 'run' => $run]);
     }
 }

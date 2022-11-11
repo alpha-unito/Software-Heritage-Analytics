@@ -3,6 +3,7 @@
         <x-slot name="head">
             <x-table.heading sortable>{{ __('Application') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Recipe') }}</x-table.heading>
+            <x-table.heading sortable>{{ __('Language') }}</x-table.heading>
             <x-table.heading class="whitespace-nowrap" sortable>{{ __('Creation Date') }}</x-table.heading>
             <x-table.heading class="whitespace-nowrap" sortable>{{ __('Evaluation Date') }}</x-table.heading>
             <x-table.heading sortable>{{ __('Settings') }}</x-table.heading>
@@ -25,6 +26,11 @@
                             </label>
                         </div>
                     </x-table.cell>
+                    <x-table.cell>
+                        <div class="flex flex-col">
+                            {{ $run->language }}
+                        </div>
+                    </x-table.cell>
                     <x-table.cell class="whitespace-nowrap">
                         {{ $run->created_at->format("m/d/Y") }}
                     </x-table.cell>
@@ -32,7 +38,7 @@
                         @if($run->path != '')
                             {{ explode(' ',$run->execution_time)[1] }}
                         @endif
-                    </x-table.cell>                    
+                    </x-table.cell>
                     <x-table.cell class="w-full">
                         {{ $run->settings }}
                     </x-table.cell>
