@@ -24,6 +24,14 @@ class Run extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function reset() {
+        $this->job_id = null;
+        $this->path = null;
+        $this->info = null;
+        $this->status = 0;
+        $this->save();
+    }
+
     public function run() {
         // CAPIO
         $port = "4320";
@@ -40,13 +48,12 @@ class Run extends Model
             "dstream_time" => 1000
         ];
         $full_recipe["projects"] = [];
-        
+
         foreach($this->recipe->data as $project) {
             $full_recipe["projects"][$project] = [
                 "language_type" => ""
             ];
         }
         dd("/usr/bin/python3 dashboardclient.py -p $port -a $host -m $spark -r /tmp/$tmp_recipe.json -e 20G", json_encode($full_recipe));
-        // "/usr/bin/python3 dashboardclient.py -p $port -a $host -m $spark -r $tmp_recipe/ricetta1.json -e 20G &"
     }
 }
