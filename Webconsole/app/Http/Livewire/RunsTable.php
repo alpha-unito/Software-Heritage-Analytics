@@ -14,6 +14,7 @@ class RunsTable extends Component
     }
 
     public function delete(Run $run){
+        if($run->path != null && file_exists($run->path)) unlink($run->path);
         $run->delete();
     }
 
