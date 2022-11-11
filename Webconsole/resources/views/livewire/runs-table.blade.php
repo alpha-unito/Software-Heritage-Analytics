@@ -39,25 +39,32 @@
 
                     <x-table.cell>
                         <div class="flex flex-row space-x-2">
-                            @if(is_null($run->job_id))
+                            @if($run->info == "ERROR")
+                            <div class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-red-700 bg-white border border-red-300 rounded-md shadow-sm">
+                                <div class="flex flex-row space-x-2 place-items-center">
+                                    <x-icon-error class="w-4 font-green-700" />
+                                    <div class="cursor-default">Error</div>
+                                </div>
+                            </div>
+                            @elseif(is_null($run->job_id))
                             <x-button wire:click="run({{ $run->id }})" type="button" color="green">
                                 <div class="flex flex-row space-x-2 place-items-center">
                                     <x-icon-play class="w-3 font-green-700" />
-                                    <div>Run</div>
+                                    <div class="cursor-pointer">Run</div>
                                 </div>
                             </x-button>
                             @elseif(is_null($run->path))
                             <div class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-green-700 bg-white border border-green-300 rounded-md shadow-sm">
                                 <div class="flex flex-row space-x-2 place-items-center">
                                     <x-icon-loading class="w-4 font-green-700 animate-spin" />
-                                    <div>Calculating</div>
+                                    <div class="cursor-default">Calculating</div>
                                 </div>
                             </div>
                             @else
                             <x-button wire:click="inspect({{ $run->id }})" type="button" color="green">
                                 <div class="flex flex-row space-x-2 place-items-center">
                                     <x-icon-inspect class="w-4 font-green-700" />
-                                    <div>Inspect</div>
+                                    <div class="cursor-pointer">Inspect</div>
                                 </div>
                             </x-button>
                             @endif
@@ -66,7 +73,7 @@
                                 color="red">
                                 <div class="flex flex-row space-x-2 place-items-center">
                                     <x-icon-delete class="w-3 font-red-700" />
-                                    <label>Delete</label>
+                                    <div class="cursor-pointer">Delete</label>
                                 </div>
                             </x-button>
                         </div>

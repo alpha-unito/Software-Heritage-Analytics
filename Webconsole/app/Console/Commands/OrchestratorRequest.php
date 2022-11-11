@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\Run;
+
+Use Exception;
 
 class OrchestratorRequest extends Command
 {
@@ -11,7 +14,7 @@ class OrchestratorRequest extends Command
      *
      * @var string
      */
-    protected $signature = 'orchestrator:request {app_name} {app} {rules} {projects*}';
+    protected $signature = 'orchestrator:request {run} {app_name} {app} {rules} {projects*}';
 
     /**
      * The console command description.
@@ -38,10 +41,12 @@ class OrchestratorRequest extends Command
     public function handle()
     {
         $arguments = $this->arguments();
+        $run = $arguments['run'];
         $app_name = $arguments['app_name'];
         $app = $arguments['app'];
         $rules = $arguments['rules'];
         $projects = $arguments['projects'];
+        $run = Run::find($run)->first();
 
         $address = 'localhost';
         $service_port = 4320;
@@ -50,14 +55,16 @@ class OrchestratorRequest extends Command
         socket_set_option($socket,SOL_SOCKET, SO_RCVTIMEO, array("sec"=>5, "usec"=>0));
         try{
             socket_connect($socket, $address, $service_port);
-        } catch (Throwable $e) {
-            echo "Exception -> ".$e;
-            return;
+        } catch (Exception $e) {
+            $run->info = "ERROR";
+            $run->save();
+            return Command::FAILURE;
         }
+
         if ($socket === false) {
-            echo "FAILED: " . socket_strerror(socket_last_error()) . "\n";
-        } else {
-            echo "OK.\n";
+            $run->info = "ERROR";
+            $run->save();
+            return Command::FAILURE;
         }
 
         $template = '{
@@ -78,15 +85,19 @@ class OrchestratorRequest extends Command
 
         $sent = socket_write($socket, $jsonString);
         if($sent === false) {
-            echo "SEND FAILD! \n";
-        } else {
-            echo "OK.\n";
+            $run->info = "ERROR";
+            $run->save();
+            return Command::FAILURE;
         }
         if(socket_recv($socket, $replay,4096, 0)){
-            echo($replay."\n");
+            $run->info = $replay;
+            $run->save();
+            return Command::SUCCESS;
         } else {
-            echo(socket_last_error($socket));
+            $run->info = "ERROR";
+            $run->save();
+            return Command::FAILURE;
         }
-        return 0;
+
     }
 }

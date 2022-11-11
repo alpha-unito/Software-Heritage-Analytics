@@ -9,6 +9,8 @@ use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Http;
 use Carbon\Carbon;
 
+Use Exception;
+
 
 class SparkSubmit extends Command
 {
@@ -43,10 +45,6 @@ class SparkSubmit extends Command
      */
     public function handle()
     {
-        // Send Recipes
-        $response = Http::contentType("application/json")->post('http://127.0.0.1:5000/test', [
-            'body' => ['test' => 'prova']
-        ]);
 
         $arguments = $this->arguments();
         $jar = $arguments['jar'];
@@ -56,13 +54,14 @@ class SparkSubmit extends Command
 
         $run = Run::find($run_id);
 
-
-        $process = new Process(['/root/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  $app_name, '--class',  $app, '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '2', '--deploy-mode', 'client', $jar ,'1', '127.0.0.1', '9999', '1']);
-        $process->run();
-
-        // executes after the command finishes
-        if (!$process->isSuccessful()) {
-            throw new ProcessFailedException($process);
+        try{
+            $process = new Process(['/root/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  $app_name, '--class',  $app, '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '2', '--deploy-mode', 'client', $jar ,'1', '127.0.0.1', '9999', '1']);
+            $process->run();
+        } catch (Exception $e) {
+            echo "test2";
+            $run->info = "ERROR";
+            $run->save();
+            return Command::FAILURE;
         }
 
         $path = "/root/lab/Software-Heritage-Analytics/Webconsole/tmp/".$run->job_id.".txt";
@@ -72,5 +71,18 @@ class SparkSubmit extends Command
         $run->path = $path;
         $run->execution_time =  Carbon::parse(gmdate("H:i:s", Carbon::now()->diffInSeconds($run->execution_time)));
         $run->save();
+        return Command::SUCCESS;
     }
+
+    public function fails()
+    {
+        echo "Fail 2";
+        $arguments = $this->arguments();
+        $run_id = $arguments['run'];
+        $run = Run::find($run_id);
+        $run->info = "ERROR";
+        $run->save();
+        return Command::FAILURE;
+    }
+
 }
