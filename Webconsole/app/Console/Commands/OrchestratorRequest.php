@@ -54,13 +54,13 @@ class OrchestratorRequest extends Command
         try{
             socket_connect($socket, $address, $service_port);
         } catch (Exception $e) {
-            $run->info = "ERROR";
+            $run->info = "Socket Error";
             $run->save();
             return Command::FAILURE;
         }
 
         if ($socket === false) {
-            $run->info = "ERROR";
+            $run->info = "Socket Error";
             $run->save();
             return Command::FAILURE;
         }
@@ -83,7 +83,7 @@ class OrchestratorRequest extends Command
 
         $sent = socket_write($socket, $jsonString);
         if($sent === false) {
-            $run->info = "ERROR";
+            $run->info = "Socket Error";
             $run->save();
             return Command::FAILURE;
         }
@@ -92,7 +92,7 @@ class OrchestratorRequest extends Command
             $run->save();
             return Command::SUCCESS;
         } else {
-            $run->info = "ERROR";
+            $run->info = "Orchestrator Error";
             $run->save();
             return Command::FAILURE;
         }

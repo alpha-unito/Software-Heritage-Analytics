@@ -44,12 +44,12 @@
                     </x-table.cell>
 
                     <x-table.cell>
-                        <div class="flex flex-row space-x-2">
-                            @if($run->info == "ERROR")
-                            <div class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-red-700 bg-white border border-red-300 rounded-md shadow-sm">
+                        <div class="flex flex-row justify-end space-x-2">
+                            @if(strpos(strtoupper($run->info), 'ERROR') !== false)
+                            <div class="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-red-700 bg-white border border-red-300 rounded-md shadow-sm whitespace-nowrap">
                                 <div class="flex flex-row space-x-2 place-items-center">
                                     <x-icon-error class="w-4 font-green-700" />
-                                    <div class="cursor-default">Error</div>
+                                    <div class="cursor-default">{{ $run->info }}</div>
                                 </div>
                             </div>
                             @elseif(is_null($run->job_id))

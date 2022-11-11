@@ -56,8 +56,7 @@ class SparkSubmit extends Command
             $process = new Process(['/root/spark-3.1.2-bin-hadoop3.2/bin/spark-submit', '--name',  $app_name, '--class',  $app, '--master',  'spark://116.202.18.200:7077',  '--executor-memory', '1G',  '--total-executor-cores', '2', '--deploy-mode', 'client', $jar ,'1', '127.0.0.1', '9999', '1']);
             $process->run();
         } catch (Exception $e) {
-            echo "test2";
-            $run->info = "ERROR";
+            $run->info = "Spark Error";
             $run->save();
             return Command::FAILURE;
         }
@@ -77,7 +76,7 @@ class SparkSubmit extends Command
         $arguments = $this->arguments();
         $run_id = $arguments['run'];
         $run = Run::find($run_id);
-        $run->info = "ERROR";
+        $run->info = "Spark Error";
         $run->save();
         return Command::FAILURE;
     }

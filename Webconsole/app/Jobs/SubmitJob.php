@@ -44,7 +44,7 @@ class SubmitJob implements ShouldQueue
         $run->save();
         Artisan::call('orchestrator:request', ['run'=> $run, 'app_name' => $this->details['app_name'], 'app' => $this->details['app'], 'rules' => $this->details['rules'], 'projects' => $this->details['projects'] ?? []]);
         $run = $run->fresh();
-        if ($run->info != "ERROR")
+        if (strpos(strtoupper($run->info), 'ERROR') === false)
             Artisan::call('spark:submit', ['jar' => $this->details['jar'], 'app' => $this->details['app'], 'app_name' => $this->details['app_name'], 'run' => $run]);
     }
 }
