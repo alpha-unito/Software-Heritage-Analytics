@@ -40,7 +40,9 @@
                         @endif
                     </x-table.cell>
                     <x-table.cell class="w-full">
-                        {{ $run->settings }}
+                        <div class="overflow-y-scroll max-h-48">
+                            {{ $run->settings }}
+                        </div>
                     </x-table.cell>
 
                     <x-table.cell>
