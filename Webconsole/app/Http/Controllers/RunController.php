@@ -7,6 +7,8 @@ use App\Models\Recipe;
 use App\Models\Run;
 use Illuminate\Http\Request;
 
+use Exception;
+
 class RunController extends Controller
 {
     public function index()
@@ -21,7 +23,12 @@ class RunController extends Controller
 
     public function inspect(Run $run)
     {
-        $output = file_get_contents($run->path, FALSE);
+        try{
+            $output = file_get_contents($run->path, FALSE);
+        } catch (Exception $e) {
+            $output = "Missing output file, run resetted";
+            $run->reset();
+        }
         $output = str_replace(" ", "&nbsp;", $output);
         return view('runs.inspect', ['output' => $output]);
     }
