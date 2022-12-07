@@ -120,9 +120,9 @@ static inline int isNumber(const char* s, long* n) {
   if (errno == ERANGE) return 2;    // overflow/underflow
   if (e != NULL && *e == (char)0) {
     *n = val;
-    return 0;   // successo 
+    return 0;   // ok 
   }
-  return 1;   // non e' un numero
+  return 1;   // not a number
 }
 
 #define LOCK(l)      if (pthread_mutex_lock(l)!=0)        { \
