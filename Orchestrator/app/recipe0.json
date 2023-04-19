@@ -1,8 +1,8 @@
 {
-    "app": "simple-project_2.12-1.0.jar",
+    "app": "SimpleApp.jar",
     "rules": {
-        "num_slave": 2,
-        "dstream_time": 1000
+        "num_slave": 4,
+        "dstream_time": 2
     },
     "projects": {
         "953b4fdb05a0a532767a092f3070ea2abf2fa998": {
