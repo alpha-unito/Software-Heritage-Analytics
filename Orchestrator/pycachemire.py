@@ -55,7 +55,7 @@ signal.signal(signal.SIGINT, exit_gracefully)
 
 
 num_client = 0
-
+ctrlClient = []
 while True: 
     try:
         tcpServer.listen(4) 

@@ -27,7 +27,7 @@ parser.add_argument("-r", type=str, help="Recipe json file")
 parser.add_argument("-n", type=str, help="Set App name")
 parser.add_argument("-d", type=str2bool, nargs='?',const=True, default=False,help="Activate spark dry run mode.")
 parser.add_argument("-m", type=str, default="127.0.0.1", help="Set spark master address")
-parser.add_argument("-e", type=str, default="20G", help="Set spark memery")
+parser.add_argument("-e", type=str, default="20G", help="Set spark memory")
 #parser.add_argument("-s", type=str, default="127.0.0.1", help="Set stream address")
 args = parser.parse_args()
 
@@ -43,17 +43,19 @@ spark_master_addr = args.m
 stream_addr = args.a
 dry_run = args.d
 spark_mem = args.e
+spark_submit_path="~/spark-3.3.1-bin-hadoop3-scala2.13/bin/"
 
 print("dry_run:" + str(dry_run) )
 
 start_time = time.perf_counter()
+print("Receipe file:" + recipe_file) 
 recipe_json = json.load(open(recipe_file))
 if "app_name" not in recipe_json.keys():
     recipe_json["app_name"] = recipe_file.split("/")[-1]
     print("App name not present set to " +recipe_json["app_name"])
 
 
-default_path = '/home/aldinuc/ZD/pycapio/app/'
+default_path = 'app/'
 if app_name is not None:
     print("Change App name: " +recipe_json["app_name"]+ " --> " + app_name)
     recipe_json["app_name"] = app_name
@@ -67,7 +69,7 @@ print("App path:"+spark_app_path)
 dstream_time = recipe_json["rules"]["dstream_time"]
 BUFFER_SIZE = 10000 
 recipe = json.dumps(recipe_json)
-#print(recipe)
+print(recipe)
 tcpClientA = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 tcpClientA.connect((host, port))
 
@@ -86,14 +88,16 @@ if data.decode() != "Abort":
     
     # --conf spark.yarn.submit.waitAppCompletion=false
     # default class = "SHAmain"
-    param_spark = f'--class "SimpleApp" --master {addr_master} --name {recipe_json["app_name"]} --deploy-mode client  --executor-memory {spark_mem} --total-executor-cores {streams_num*4}' 
+    spark_conf ='--conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=file:///var/log/custom-log4j.properties" --conf "spark.driver.extraJavaOptions=-Dlog4j.configuration=file:///var/log/custom-log4j.properties"'
+    param_spark = f'{spark_conf} --class "{recipe_json["app_name"]}" --master {addr_master} --name {recipe_json["app_name"]} --deploy-mode client  --executor-memory {spark_mem} --total-executor-cores {streams_num*4}' 
     params_app = str(streams_num) + " " + stream_addr + " " + spark_port + " " + str(dstream_time) 
-    cmd = '/home/aldinuc/ZD/spark-3.2.0-bin-hadoop3.2/bin/spark-submit ' + param_spark  + ' \
+    cmd = spark_submit_path + 'spark-submit ' + param_spark  + ' \
            ' + spark_app_path + spark_app_name +' '+ params_app +' '
     print(cmd)
     #os.system(cmd)
     if not dry_run:
         print("Launch spark APP")
+        #time.sleep(1)
         subprocess.run(cmd,shell=True)
     else:
         print("Spark dry run")

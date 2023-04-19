@@ -44,7 +44,7 @@ class CtrlRequestThread():
         self.requestThread = [] 
         self.recipe = None
         self.CacheMng = None
-        self.dry_run = True
+        self.dry_run = False
         if self.dry_run:
             print("DRY RUN enable");
 
@@ -56,24 +56,24 @@ class CtrlRequestThread():
         pid = os.getpid()
         print(f"[+] New CTRL process pid: {os.getpid()}")
         stringa = self.conn.recv(_CONFIG["buffer_size"]).decode("utf-8")
-        print(stringa)
+        #print(stringa)
         self.recipe = json.loads(stringa)
-
+        print(f"[+] {self.recipe['app_name']} recipe:" + stringa)
         self.logging = logger = Logger(self.recipe["app_name"])
-        self.logging.debug("[+] Recipe received from Dashboard: ", self.recipe)
-        print("Num request todo:" + str(len(self.recipe["projects"])))
+        self.logging.debug(f"[+ {self.recipe['app_name']}] Recipe received from Dashboard: ", self.recipe)
+        print(f"[+ {self.recipe['app_name']}] Num projects to analyze :" + str(len(self.recipe["projects"])))
         tcpCTRLServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         tcpCTRLServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         tcpCTRLServer.bind((self.SPARKCLINET_TCP_IP, self.SPARKCLINET_TCP_PORT + self.client_num)) 
         
         
         #init spark stream thread queue
-        print(f'[+] Create {self.recipe["rules"]["num_slave"]} streaming queue')
+        print(f'[+ {self.recipe["app_name"]}] Create {self.recipe["rules"]["num_slave"]} workers streaming in queue')
         for i in range(self.recipe["rules"]["num_slave"]):
-            self.queue_list.append(Queue())
+            self.queue_list.append(Queue(maxsize=2))
             
         # run thread Cache Manager  
-        print("[+] Run APP "+self.recipe["app_name"])
+        print(f"[+ {self.recipe['app_name']}] Run APP "+self.recipe["app_name"])
         self.CacheMng = CacheManager(self.recipe["app_name"],self.queue_list,self.recipe["projects"],self.recipe["rules"]["num_slave"],self.dry_run)
         CacheMng_p = Process(target=self.CacheMng.run)
         CacheMng_p.start()
@@ -83,22 +83,25 @@ class CtrlRequestThread():
 
         # send ready message to dashboard with the port numeber
         MESSAGE = str(self.SPARKCLINET_TCP_PORT + self.client_num)
-        self.conn.sendall(MESSAGE.encode())  # echo 
+        self.conn.sendall(MESSAGE.encode()) 
         
         if not self.dry_run:
             # accept connection from spark
-            print(f"[+ {self.recipe['app_name']}] CTRL thread waiting for spark connections..")
+            print(f"[+ {self.recipe['app_name']}] CTRL thread waiting for spark {len(self.queue_list)} connections..")
+            num_connection = 0
             for q in self.queue_list:
             
                 tcpCTRLServer.listen(4) 
                 self.logging.debug(f"[+ {self.recipe['app_name']}] CTRL server waiting for connections " + self.SPARKCLINET_TCP_IP + ":" + str(self.SPARKCLINET_TCP_PORT) + " from SPARK clients...") 
                 (req_conn, (req_ip,req_port)) = tcpCTRLServer.accept() 
-                self.logging.debug(f"[+ {self.recipe['app_name']}] New spark worker connection from: " + str(req_ip) )
-                print(f"[+ {self.recipe['app_name']}] New spark worker connection from: " + str(req_ip) )
+                num_connection = num_connection + 1
+                self.logging.debug(f"[+ {self.recipe['app_name']}] New spark worker [{num_connection}] connection from: " + str(req_ip) )
+                print(f"[+ {self.recipe['app_name']}] New spark worker  [{num_connection}] connection from: " + str(req_ip) )
                 newreq = SparkRequest(req_conn,req_ip,req_port,q) 
                 newreq_p = Process(target=newreq.run)
                 newreq_p.start() 
                 self.requestThread.append(newreq_p) 
+
 
     
         # wait for end Cache Manager
@@ -110,10 +113,11 @@ class CtrlRequestThread():
 
         if not self.dry_run:
             # wait for stream thread ending
-            print(f"[+ {self.recipe['app_name']}] Cache Manager end")
+            # print(f"[+ {self.recipe['app_name']}] Cache Manager end")
             for t in self.requestThread: 
                 print(f"[+ {self.recipe['app_name']}] wait streaming queue end...")
                 t.join()
+                print(f"[+ {self.recipe['app_name']}] streaming queue end")
         
         # send end message to dashboard  i
         print(f"[+ {self.recipe['app_name']}]  SEND Application ended " +self.recipe["app_name"] )
