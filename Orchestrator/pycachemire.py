@@ -64,7 +64,7 @@ while True:
         ctrl = CtrlRequestThread(conn,ip,port,num_client) 
         newclient = Process(target=ctrl.run)
         newclient.start() 
-        ctrlClient.append(newclient) 
+        # ctrlClient.append(newclient) 
         num_client = num_client + 1    
     except Exception as e: print(e)
 

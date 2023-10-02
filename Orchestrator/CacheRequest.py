@@ -337,6 +337,7 @@ class CacheRequest():
     def SWHVault(self):
         try:
             #self.logging.debug("POST -> " + f"{self.swh_api_endpoint}/{self.vault_type}/{self.prefix}{self.project_id}/")
+            # print(f"{self.swh_api_endpoint}/{self.vault_type}/{self.prefix}{self.project_id}/")
             response = requests.post(f"{self.swh_api_endpoint}/{self.vault_type}/{self.prefix}{self.project_id}/")
         except requests.exceptions.RequestException as e:
             #self.logging.debug("POST ERROR " + str(e))
@@ -350,6 +351,7 @@ class CacheRequest():
         #logging.debug(data)
         tar_file_data = None
         while True:
+            print (data)
             if data["status"] == "done":
                 tar_file_data = requests.get(f"{data['fetch_url']}")
                 break
@@ -360,6 +362,7 @@ class CacheRequest():
             #logging.debug(data)
 
         self.logging.debug("DONE!" + f"{self.swh_api_endpoint}/{self.vault_type}/{self.prefix}{self.project_id}/")
+        print("DONE!" + f"{self.swh_api_endpoint}/{self.vault_type}/{self.prefix}{self.project_id}/")
 
         #file_entry = cache.put(self.project_id,tar_file)
         inmemory_tar_file = io.BytesIO(tar_file_data.content)

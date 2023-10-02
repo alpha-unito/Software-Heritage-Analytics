@@ -80,7 +80,6 @@ class CtrlRequestThread():
         #self.CacheMng.start()
         #self.requestThread.append(self.CacheMng) 
 
-
         # send ready message to dashboard with the port numeber
         MESSAGE = str(self.SPARKCLINET_TCP_PORT + self.client_num)
         self.conn.sendall(MESSAGE.encode()) 
@@ -90,7 +89,6 @@ class CtrlRequestThread():
             print(f"[+ {self.recipe['app_name']}] CTRL thread waiting for spark {len(self.queue_list)} connections..")
             num_connection = 0
             for q in self.queue_list:
-            
                 tcpCTRLServer.listen(4) 
                 self.logging.debug(f"[+ {self.recipe['app_name']}] CTRL server waiting for connections " + self.SPARKCLINET_TCP_IP + ":" + str(self.SPARKCLINET_TCP_PORT) + " from SPARK clients...") 
                 (req_conn, (req_ip,req_port)) = tcpCTRLServer.accept() 
@@ -110,6 +108,9 @@ class CtrlRequestThread():
         CacheMng_p.join()
         print(f"[+ {self.recipe['app_name']}] Cache Manager end")
 
+        for q in self.queue_list:
+            print("TEST di quanti EOS")
+            q.put("END")
 
         if not self.dry_run:
             # wait for stream thread ending

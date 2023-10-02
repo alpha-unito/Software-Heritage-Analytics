@@ -1,2 +1,15 @@
-__pycache__
 *.php
+*.out
+*.log
+*.jar
+*.tgz
+*.check_cache
+
+__pycache__
+app/*/
+logs/
+script/top100recipes
+output/
+target/
+
+!app/licensectrl/

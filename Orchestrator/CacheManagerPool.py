@@ -64,10 +64,12 @@ def CacheWorker(app_name, q: JoinableQueue, stop_event: Event, q_stream: Queue):
         
         # Exit if end of queue
         #if cache_req_params is None:
-        if cache_req is None:
+        if cache_req == "END":
             print(f"[**CW_{pid} ({app_name})] find 'None' on queue")
             logger.debug("CacheWorker exiting: find 'None' on queue")
             q.task_done()
+            # q_stream[0].put("END")
+            # q_stream[1].put("END")
             break
         
         # Do the task
@@ -92,6 +94,7 @@ def CacheWorker(app_name, q: JoinableQueue, stop_event: Event, q_stream: Queue):
         #finally:
         #    logger.debug(f"Exit CacheWorker ({current_process().name})")
         q.task_done()
+
     print(f"[**CW_{pid} ({app_name})] EXIT Cache Worker process [num req done:{num_req}]")
     sys.exit()    
 
@@ -141,17 +144,20 @@ class CacheManager():
         
         # Create a cache Request task for every project in recipe
         for project_id in self.project_list  :
+
             self.logging.debug("[+] new cache request " + project_id + " (" + str(self.project_list[project_id]['language_type']) + ")")
             print(f"{self.log_header} new cache request " + project_id + " (" + str(self.project_list[project_id]['language_type']) + ")")           
 
             cache_ret = CacheRequest(self.app_name,project_id,self.project_list[project_id]['language_type'])    
             
             self.request_queue.put(cache_ret)
-
+        
+        
         # Put exit command in every cache process pool
         for i in range(self.max_num_cache_request):
             self.logging.debug("[+] Set None on Cache worker task queue")
-            self.request_queue.put(None)
+            print("EXIT Cache worker")
+            self.request_queue.put("END")
 
 
 
@@ -187,8 +193,9 @@ class CacheManager():
 
         self.logging.debug("Cache Manager exit")
         print(f"{self.log_header} Cache Manager exit")
-        os._exit(os.EX_OK)
-    
+        # os._exit(os.EX_OK)
+        sys.exit() 
+        
     def handle_signal(self, signum):
         print(f"{self.log_header}  Cache Manager handle_signal event")
         return 

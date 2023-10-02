@@ -53,7 +53,7 @@ def unpackProjectFile(project_id,tar_file):
         ret = {} 
         with tarfile.open(fileobj=tar_file,mode="r:gz" ) as file_list:
             for f in file_list:
-                #print(file.name)
+                # print(f.name)
                 try:
                     ret[f.name] = {'project_id':project_id,
                                       'file_basename': os.path.basename(f.name),
@@ -92,6 +92,7 @@ def scheduleFileOnStream(language,queue_list,file_list: Dict):
     extensions = ""
     num_file = 0
     data_size = 0
+    # print(file_list)
     ret += "[+] list "  + str(len(file_list)) + " files\n" 
     #print("[+] list "  + str(len(file_list)) + " files")
     if language != "":
