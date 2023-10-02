@@ -1,7 +1,0 @@
-[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/FirstApp/target/scala-2.13/first-project_2.13-1.0.jar ...[0m
-[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FirstApp.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/FirstApp/target/scala-2.13/classes/FirstApp.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	FirstApp$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/FirstApp/target/scala-2.13/classes/FirstApp$.class[0m
-[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
