@@ -1,8 +1,8 @@
 {
-    "app": "wordcount.jar",
+    "app": "rawnetworkgrep.jar",
     "rules": {
         "num_slave": 2,
-        "dstream_time": 1
+        "dstream_time": 5
     },
     "projects": {
         "953b4fdb05a0a532767a092f3070ea2abf2fa998": {

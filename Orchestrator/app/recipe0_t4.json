@@ -1,16 +1,10 @@
 {
-    "app": "rawnetworkgrep.jar",
+    "app": "licensectrl.jar",
     "rules": {
-        "num_slave": 2,
+        "num_slave": 4,
         "dstream_time": 2
     },
     "projects": {
-	"project1ooooooooooooooooooooooooooooooo": {
-            "language_type": ""
-        },
-        "project2ooooooooooooooooooooooooooooooo": {
-            "language_type": ""
-        },
         "953b4fdb05a0a532767a092f3070ea2abf2fa998": {
             "language_type": ""
         },

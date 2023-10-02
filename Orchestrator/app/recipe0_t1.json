@@ -1,5 +1,5 @@
 {
-    "app": "wordcount2.jar",
+    "app": "wordcount.jar",
     "rules": {
         "num_slave": 2,
         "dstream_time": 2

@@ -1,0 +1,285 @@
+{
+    "app": "licensectrl.jar",
+    "rules": {
+        "num_slave": 2,
+        "dstream_time": 2
+    },
+    "projects": {
+        "2d3b74df124a97263f89c70e5d4f3802d44fa5c7": {
+            "language_type": ""
+        },
+        "a9c025d069acbd1b14950ac1d69e0e30d3ce7c69": {
+            "language_type": ""
+        },
+        "4b08ee87eff2025999004c30da9cdf91da60cb44": {
+            "language_type": ""
+        },
+        "649c8451d9ca448d995670b43b6b278f0dee6262": {
+            "language_type": ""
+        },
+        "58ead9d06a58f8eafa97d8d90404b61087e41ee2": {
+            "language_type": ""
+        },
+        "f7d76d0369bd5d384957bf47caddaa2b9cd75bc9": {
+            "language_type": ""
+        },
+        "971e6969ffff8fc2eaab28b048f082f2310bc632": {
+            "language_type": ""
+        },
+        "26288f0cc95bc21784f1ef03c7fd46cd669d0728": {
+            "language_type": ""
+        },
+        "a1a794fbb292b971dfb994fb87a90f6bb225b29a": {
+            "language_type": ""
+        },
+        "6df6b0ab1074ef889cbf6f074d6b64072505e66c": {
+            "language_type": ""
+        },
+        "a61d5dee27693bc5a8c87a344aaa5a6338b89b92": {
+            "language_type": ""
+        },
+        "11c811023a387cfea4c857eabc26f0118517afe0": {
+            "language_type": ""
+        },
+        "8785b4b54ac13564ac93a1002eb718fae1157be1": {
+            "language_type": ""
+        },
+        "3e8f0b7ad66c51ebc87e08b54ffde23db60e4e82": {
+            "language_type": ""
+        },
+        "451b6e15ec40b12fde98f937180849478191627b": {
+            "language_type": ""
+        },
+        "39f50abfdead7fd93b25e8366eeddad5bd1bb545": {
+            "language_type": ""
+        },
+        "ad0c158189f1e1cb5e06e1935d3a2b937c0a60a2": {
+            "language_type": ""
+        },
+        "321d11eaee885ceb3a74db0a062f9bbdf282148c": {
+            "language_type": ""
+        },
+        "0bcb098147ca14b1d14a99d454b9476a737c0b8a": {
+            "language_type": ""
+        },
+        "2a11536d315aa23927a4961c31b246103c9822ac": {
+            "language_type": ""
+        },
+        "2468d8fbf090ff4994791b56a4cc61fab1fbaea7": {
+            "language_type": ""
+        },
+        "414e0667b51667c0ab039adff5e7c4798b2fc167": {
+            "language_type": ""
+        },
+        "d49d606a9c91fe5d3a3bc66edec19a4a7cb55910": {
+            "language_type": ""
+        },
+        "4da7c71acb7027a2b59a086bf58e39917d0698f1": {
+            "language_type": ""
+        },
+        "3753950dcbe0c44a21841553221d458c0eff9dc6": {
+            "language_type": ""
+        },
+        "da9bf7b3420a5806dbef29c7226da676dad3ed36": {
+            "language_type": ""
+        },
+        "f1dae1ba2c2fbbe79e22bfd81f11bf25497a5eaa": {
+            "language_type": ""
+        },
+        "cb6d0a660cfcb28ee9e8a1c0266925f8f541edfb": {
+            "language_type": ""
+        },
+        "5a4e0762270e7598d56d18b4b126b6ebf40d6905": {
+            "language_type": ""
+        },
+        "26b2b013cb14ba8e21172a18c6ee853e7b772109": {
+            "language_type": ""
+        },
+        "24eb767e4b5ffe5209eb43c94b6aa2c60578bed4": {
+            "language_type": ""
+        },
+        "bb2e98f87b3851843d2c8a376604b0296d2bb228": {
+            "language_type": ""
+        },
+        "66a3066c51626ae638af13c67ab57bbb3ee8a39d": {
+            "language_type": ""
+        },
+        "7b09fff30eda8cb2169d24bf3084009190fb2e2e": {
+            "language_type": ""
+        },
+        "51fa776745336e01c8fd85954a904fbc514b8694": {
+            "language_type": ""
+        },
+        "8f2e69449436d82fbd88b5892a1737d64537e172": {
+            "language_type": ""
+        },
+        "213aac7f932cdbc7c2119fc66e6b2ac0b2237409": {
+            "language_type": ""
+        },
+        "025cf2bea5fc88597c5fb082bdc70d4194ad98da": {
+            "language_type": ""
+        },
+        "4847e71b6ec126cce2e82621f77efd3530164011": {
+            "language_type": ""
+        },
+        "21567b6c2f7665dd3f0b9364e878e5adfac122ae": {
+            "language_type": ""
+        },
+        "c931a36e38794d7f0de7f87a71c8bad5bc641d98": {
+            "language_type": ""
+        },
+        "349e8f638771e8a0a4f61fd323e0debd6ac736bb": {
+            "language_type": ""
+        },
+        "ee74653bb50c0134fa94ad8c2de5f37fa13bdbd7": {
+            "language_type": ""
+        },
+        "83e7dc1281874779c46dfadcc15b2bb66d8e599c": {
+            "language_type": ""
+        },
+        "8e066935a176c3a4f4f387bb884f18b295c3d42c": {
+            "language_type": ""
+        },
+        "6e9de3e5fa7f053bde38e8a61483038b85c80dd5": {
+            "language_type": ""
+        },
+        "c2a4a9de23d904c8d100502c587ace7a939c481d": {
+            "language_type": ""
+        },
+        "b14244ccef6918d825873cac388c5086f2670077": {
+            "language_type": ""
+        },
+        "90625864efdc5cc33f552deb8e4df116d12f70c4": {
+            "language_type": ""
+        },
+        "3424b006728fee41b571be2a511e730c1cc24abb": {
+            "language_type": ""
+        },
+        "1ad716f955dd4abd78d2f6fa30bfb3c5a765b1d0": {
+            "language_type": ""
+        },
+        "1b5682d68cb40a1127c5800a38a10e039955f554": {
+            "language_type": ""
+        },
+        "5f84b226e6d62ab2eb15204752aef432715d9b04": {
+            "language_type": ""
+        },
+        "6ff3d3fc260452f84b5546c4a2e380bfdc918934": {
+            "language_type": ""
+        },
+        "7340e5aaa3355f1ba665aab5b69badd9c8d98b85": {
+            "language_type": ""
+        },
+        "dfe86d4328027fb6e8c9a02e7ad4a7f95dcd213c": {
+            "language_type": ""
+        },
+        "e78d036b6fbf6c0d3061a1dca855f7668f59a071": {
+            "language_type": ""
+        },
+        "ef59eb925a0f18b452677b15232428b0739aec2d": {
+            "language_type": ""
+        },
+        "3617e39963a3d13643edbeb0c33015a0a580b864": {
+            "language_type": ""
+        },
+        "93d73137e22e40ec1ae2f3228fa93d0976f358d9": {
+            "language_type": ""
+        },
+        "017e63e82ead13ee2334bcc90c0df326e7536bc8": {
+            "language_type": ""
+        },
+        "91aee99745750204ddba60d07f323316c7cde91b": {
+            "language_type": ""
+        },
+        "eb09b8a90f5ee87fccb2e03dd12f3be012687218": {
+            "language_type": ""
+        },
+        "5cbf35f238e14ae807bc1dfe6d563ce0106c6cb6": {
+            "language_type": ""
+        },
+        "66b031be48234f193f784f6862e7d2dcee0886f4": {
+            "language_type": ""
+        },
+        "32465fde7e4acd764c9e71b96b13a13ef2bb2a91": {
+            "language_type": ""
+        },
+        "51a302a4af47fd3163b26b3f5d39c73061c73ec6": {
+            "language_type": ""
+        },
+        "290ad4b9a7c49af671ccbf538b384a9602fdd27e": {
+            "language_type": ""
+        },
+        "1f2b270cf2aa875e1cbbaef1ebd043b08c862bd8": {
+            "language_type": ""
+        },
+        "04c59cdc90d25c48464ce0e9c7c802da252ae380": {
+            "language_type": ""
+        },
+        "59b4e14ccc0181d344e6a45597e20476356c3d35": {
+            "language_type": ""
+        },
+        "90193947da53b9d23e9f5037e04afcc1da850a7e": {
+            "language_type": ""
+        },
+        "2c0117e5a8ab199051bab40bd731e57044103832": {
+            "language_type": ""
+        },
+        "60729446e7e6b60f2b4013450363d4a6d62cc6a1": {
+            "language_type": ""
+        },
+        "c8f37233f7c8f5bac5233442d76465c1b85db54f": {
+            "language_type": ""
+        },
+        "8c06adc79322c37dc761e43c830252ee0687e1aa": {
+            "language_type": ""
+        },
+        "1f96bbbead7af451b4496bd1182345af25486b89": {
+            "language_type": ""
+        },
+        "b864a15980f239c32ca6c5bfa0bbe0f2ea091f2a": {
+            "language_type": ""
+        },
+        "84fdea4c86362a0f5e0d897ab222c4dfc2c66412": {
+            "language_type": ""
+        },
+        "fed30f3678e00b5bba32a2e6a9fa8e4dfaad10db": {
+            "language_type": ""
+        },
+        "0019b6113bbc69e58de078a4ee65fa505d5784e7": {
+            "language_type": ""
+        },
+        "a9d83623d91bfbefe4a57b20330ab6c1f186dc91": {
+            "language_type": ""
+        },
+        "24d5225f8d0f1a00fd1a96a0f48fa7a7e93d3050": {
+            "language_type": ""
+        },
+        "333888ffbe20dd8ac59cecae01f0e4335c90a93f": {
+            "language_type": ""
+        },
+        "86d2aff436147fef17b6450319a180a3c4b30ec2": {
+            "language_type": ""
+        },
+        "bfd73d50c903bdcde330b68d56436f92fc603a70": {
+            "language_type": ""
+        },
+        "22b121748a9125b483dff02eab9cf5eef96f04f5": {
+            "language_type": ""
+        },
+        "c52783cf4f8c9dcea545f3dc2dc7dbe59d7afffc": {
+            "language_type": ""
+        },
+        "1934dc2bbe2cdb7b7fd553ff6a81d03f03b3fd58": {
+            "language_type": ""
+        },
+        "80106ea9c21aa1a90534f893f34ab520d1fe1fa3": {
+            "language_type": ""
+        },
+        "b6cef0180d548947a61299ab7d69dbdbeecfb593": {
+            "language_type": ""
+        },
+        "373f2921c79e9531a6a312f831d75c125501bcf0": {
+            "language_type": ""
+        }
+    }
+}

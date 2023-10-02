@@ -1,0 +1,21 @@
+{
+    "app": "licensectrl.jar",
+    "rules": {
+        "num_slave": 2,
+        "dstream_time": 2
+    },
+    "projects": {
+        "74396939bb577e3b6306c8b0c137d3bbe0439cfb": {
+            "language_type": ""
+        },
+        "c2848a2e8560bde21106d047def39af16789c513": {
+            "language_type": ""
+        },
+        "c7d26ed0da3b92aae71c86c5f441ddba4d6068d4": {
+            "language_type": ""
+        },
+        "ea866553e8985f92df03f92ddcdcdac512539ca3": {
+            "language_type": ""
+        }                  
+    }
+}

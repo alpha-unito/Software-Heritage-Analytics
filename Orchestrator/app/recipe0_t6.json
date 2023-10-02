@@ -1,0 +1,39 @@
+{
+    "app": "licensectrl.jar",
+    "rules": {
+        "num_slave": 4,
+        "dstream_time": 2
+    },
+    "projects": {
+        "953b4fdb05a0a532767a092f3070ea2abf2fa998": {
+            "language_type": ""
+        },
+        "a9bae024de1cf9651bfbec6107ef9d24524c2e5f": {
+            "language_type": ""
+        },
+        "ea866553e8985f92df03f92ddcdcdac512539ca3": {
+            "language_type": ""
+        },
+        "5e48532f36eea459a7fbad3d5182951a70a8d72f": {
+            "language_type": ""
+        },
+        "74396939bb577e3b6306c8b0c137d3bbe0439cfb": {
+            "language_type": ""
+        },
+        "dbc2448850282374bc03e938f78999a22e735fe1": {
+            "language_type": ""
+        },
+        "48e96e65be1336ad9433e55f0276c92cc143765e": {
+            "language_type": ""
+        },
+        "0e32a6c72279a893e41606eece271f6aa9b85834": {
+            "language_type": ""
+        },
+        "315323ac348d13bce3ce8f619e3ff5a2f944e264": {
+            "language_type": ""
+        },
+        "aa2b9ad20020cee68ccd8fd1a111fae5725584ea": {
+            "language_type": ""
+        }
+    }
+}

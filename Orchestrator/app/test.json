@@ -1,0 +1,45 @@
+{
+    "app": "wordcount2.jar",
+    "rules": {
+        "num_slave": 2,
+        "dstream_time": 1
+    },
+    "projects": {
+        "project1ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+        "project2ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+	"project3ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+
+	"project4ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+
+	"project5ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+
+	"project6ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+
+	"project7ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+
+	"project8ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+
+	"project9ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        }
+
+
+    }
+}
+

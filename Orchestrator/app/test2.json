@@ -1,0 +1,16 @@
+{
+    "app": "rawnetworkgrep.jar",
+    "rules": {
+        "num_slave": 1,
+        "dstream_time": 2
+    },
+    "projects": {
+        "project1ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        },
+        "project2ooooooooooooooooooooooooooooooo": {
+            "language_type": ""
+        }
+    }
+}
+
