@@ -1,0 +1,3 @@
+[debug] not up to date. inChanged = true, force = false
+[debug] Updating ProjectRef(uri("file:/home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/wordcount/project/"), "wordcount-build")...
+[debug] Done updating ProjectRef(uri("file:/home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/wordcount/project/"), "wordcount-build")

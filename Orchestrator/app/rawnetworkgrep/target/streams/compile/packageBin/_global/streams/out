@@ -1,0 +1,7 @@
+[0m[[0m[0mdebug[0m] [0m[0mPackaging /home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/rawnetworkgrep/target/scala-2.13/rawnetworkgrep_2.13-0.0.1.jar ...[0m
+[0m[[0m[0mdebug[0m] [0m[0mInput file mappings:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	NetworkGrep.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/rawnetworkgrep/target/scala-2.13/classes/NetworkGrep.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	NetworkGrep$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	  /home/ubuntu/Software-Heritage-Analytics/Orchestrator/app/rawnetworkgrep/target/scala-2.13/classes/NetworkGrep$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mDone packaging.[0m
