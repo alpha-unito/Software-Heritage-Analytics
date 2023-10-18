@@ -2,7 +2,6 @@ import sys
 import argparse
 import socket 
 import json
-import os
 import subprocess
 import time
 import uuid
@@ -30,6 +29,8 @@ parser.add_argument("-d", type=str2bool, nargs='?',const=True, default=False,hel
 parser.add_argument("-m", type=str, default="127.0.0.1", help="Set spark master address")
 parser.add_argument("-e", type=str, default="20G", help="Set spark memory")
 parser.add_argument("-D", type=str2bool, nargs='?',const=True, default=False,help="Activate spark deploy-mode client (debug mode).")
+parser.add_argument("-dir", type=str,help="Dir to save json app output")
+
 #parser.add_argument("-s", type=str, default="127.0.0.1", help="Set stream address")
 args = parser.parse_args()
 
@@ -45,6 +46,7 @@ spark_master_addr = args.m
 stream_addr = args.a
 dry_run = args.d
 spark_mem = args.e
+output_dir = args.dir
 if args.D is False:
     spark_deploy_mode = "cluster"
 else:
@@ -132,7 +134,7 @@ if data.decode() != "Abort":
     param_spark = f'{spark_conf} --class "{recipe_json["app_name"]}" --master {addr_master} --name {recipe_json["app_name"]} --deploy-mode {spark_deploy_mode}  --executor-memory {spark_mem} --executor-cores 8 --num-executors 4' # --num-executors {streams_num}' 
     params_app = str(streams_num) + " " + stream_addr + " " + spark_port + " " + str(dstream_time) 
     cmd = spark_submit_path + 'spark-submit ' + param_spark  + ' \
-           ' + spark_app_path + spark_app_name +' '+ params_app +' '
+           ' + spark_app_path + spark_app_name +' '+ params_app +' ' + output_dir + ' '
     print(cmd)
     #os.system(cmd)
     if not dry_run:
