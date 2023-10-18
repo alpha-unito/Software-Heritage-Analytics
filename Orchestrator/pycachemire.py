@@ -22,6 +22,7 @@ MAX_CLIENT =  _CONFIG["num_max_app_client"]
 
 tcpServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
 tcpServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) 
+tcpServer.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
 tcpServer.bind((CTRL_TCP_IP, CTRL_TCP_PORT)) 
 ctrlThreads = [] 
 

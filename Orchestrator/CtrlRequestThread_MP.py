@@ -64,6 +64,7 @@ class CtrlRequestThread():
         print(f"[+ {self.recipe['app_name']}] Num projects to analyze :" + str(len(self.recipe["projects"])))
         tcpCTRLServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         tcpCTRLServer.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        tcpCTRLServer.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
         tcpCTRLServer.bind((self.SPARKCLINET_TCP_IP, self.SPARKCLINET_TCP_PORT + self.client_num)) 
         
         

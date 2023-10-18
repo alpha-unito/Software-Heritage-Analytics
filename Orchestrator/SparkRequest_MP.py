@@ -10,7 +10,19 @@ from config import _CONFIG
 import uuid
 
 #logging.basicConfig(level=logging.DEBUG,format='[%(levelname)s] (%(threadName)-9s) %(message)s',)
-
+ext_to_exclude = [
+    ".jpg", ".jpeg", ".png", ".gif", ".tiff", 
+    ".mp3", ".wav", ".flac",
+    ".mp4", ".mov", ".avi", ".mkv", ".webm", ".wmv", ".flv", ".mpeg", ".ogg", ".dvx", ".rm", ".asf", ".3pg"
+    ".doc", ".docx", ".pdf",
+    ".ppt", ".pptx", ".key",
+    ".xls", ".xlsx", ".csv",
+    ".zip", ".rar", ".7z",
+    ".html", ".htm",
+    ".json",
+    ".xml",
+    ".csv"
+]
 class SparkRequest(): 
  
     def __init__(self,conn,ip,port,q): 
@@ -59,14 +71,18 @@ class SparkRequest():
                     # #self.conn.send(json.dumps('{"project_id":"EOS","file_name":"","file_type": "","data":""}').encode() + b'\n')
                     print("[**] Data is None... WAIT") 
                     time.sleep(_CONFIG["send_sleep_wait"])
-                    continue                   
+                    continue                
+                if any((data_file["file_basename"]).endswith(ext) for ext in ext_to_exclude):
+                    print(f"[ESCLUSO]:", data_file["file_basename"])
+                    continue 
+                print(f"[OK]:", data_file["file_basename"])
                 time.sleep(_CONFIG["send_sleep_debug"])
                 msg = json.dumps(data_file)
                 #print("msg: " + data_file["file_name"]);
                 self.conn.send(msg.encode() + b'\n')
                 self.conta += 1
-                project_id = data_file['project_id']
-                nome = data_file['file_basename']
+                # project_id = data_file['project_id']
+                # nome = data_file['file_basename']
                 # print(f"[{self.id}] - {nome} ====> CONTA: {self.conta}")
                 # print(f"{project_id} - {name}")
             except:
