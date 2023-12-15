@@ -42,6 +42,9 @@
 #define EXTRA_LEN_PRINT_ERROR   512
 #endif
 
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
 #define SYSCALL_EXIT(name, r, sc, str, ...)	\
     if ((r=sc) == -1) {				\
 	perror(#name);				\

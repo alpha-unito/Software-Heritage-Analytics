@@ -212,7 +212,9 @@ static void *proxy_thread(void *arg) {
     (*(task->fun))(task->arg1, task->arg2);
     
     free(task);
+#if !defined(NO_STATISTICS)    
     addToStats(SERVER_BUSY, -1, 0);
+#endif    
     return NULL;
 }
 
@@ -239,6 +241,8 @@ int spawnThread(void (*f)(void*,void*), void* arg1, void* arg2) {
 	errno = EFAULT;
 	return -1;
     }
+#if !defined(NO_STATISTICS)    
     addToStats(SERVER_BUSY, 1, 0);
+#endif    
     return 0;
 }

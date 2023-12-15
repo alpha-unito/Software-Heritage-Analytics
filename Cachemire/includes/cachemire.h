@@ -45,7 +45,7 @@
 #define DEFAULT_SRV_PORT         13000   // option -p
 #define DEFAULT_N_THREADS            8   // option -n
 #define DEFAULT_MAX_NTHREADS        64   // no option
-#define DEFAULT_TIMEOUT_MS          30   // 50ms -- no option
+#define DEFAULT_TIMEOUT_MS          30   // 30ms -- no option
 #define DEFAULT_MAX_WAITTIME_MS   5000   //  5s -- option -t
 // max amount of data that is read from the client socket with a
 // single call

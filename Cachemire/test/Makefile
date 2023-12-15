@@ -39,8 +39,8 @@ TARGETS		= cachemire_client
 .PHONY: all clean cleanall
 .SUFFIXES: .c .h
 
-%: %.c
-	$(CC) $(CFLAGS) -I $(INCDIR) $(OPTFLAGS)  -o $@ $<
+cachemire_client: cachemire_client.c  ../src/threadpool.c
+	$(CC) -DNO_STATISTICS $(CFLAGS) -I $(INCDIR) $(OPTFLAGS)  -o $@ $^ -pthread
 
 all		: $(TARGETS)
 
