@@ -56,9 +56,8 @@ class CtrlRequestThread():
         pid = os.getpid()
         print(f"[+] New CTRL process pid: {os.getpid()}")
         stringa = self.conn.recv(_CONFIG["buffer_size"]).decode("utf-8")
-        #print(stringa)
         self.recipe = json.loads(stringa)
-        print(f"[+] {self.recipe['app_name']} recipe:" + stringa)
+        print(f"[+] {self.recipe['app_name']} recipe:\n" + stringa)
         self.logging = logger = Logger(self.recipe["app_name"])
         self.logging.debug(f"[+ {self.recipe['app_name']}] Recipe received from Dashboard: ", self.recipe)
         print(f"[+ {self.recipe['app_name']}] Num projects to analyze :" + str(len(self.recipe["projects"])))
@@ -110,7 +109,6 @@ class CtrlRequestThread():
         print(f"[+ {self.recipe['app_name']}] Cache Manager end")
 
         for q in self.queue_list:
-            print("TEST di quanti EOS")
             q.put("END")
 
         if not self.dry_run:
