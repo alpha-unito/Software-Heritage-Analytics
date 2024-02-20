@@ -20,8 +20,6 @@
 # See the Spack documentation for more information on packaging.
 # ----------------------------------------------------------------------------
 
-# -*- shell -*-
-
 from spack.package import *
 
 
@@ -31,12 +29,16 @@ class Spark332BinHadoop3Scala213(Package):
     homepage = "https://github.com/alpha-unito/Software-Heritage-Analytics"
     url = "https://archive.apache.org/dist/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3-scala2.13.tgz"
 
-    version("3.3.2", sha256="036dfb87b491e5ae1540573486e84ade1e9c8d175a1d36ea381d1805d8214c88edca31887f9062e60ed529ea9211eede738febf143fa43bebbe26209e3ad71ac")
+    version("3.3.2-bin-hadoop3-scala2.13",
+            sha512="3ce800ca3e0569ccb8736e4fcdb8146ec6d3070da7622dcc9d0edbeb2dc9524224f3a082a70a0faff91306369a837caa13291a09f3ad0d2b0b51548365f90ead")
 
+    depends_on("openjdk@11.0.17_8", type='run')
 
     def setup_run_environment(self, env):
-        env.set("SPARK_HOME", join_path(self.prefix, 'spark-3.3.2-bin-hadoop3-scala2.13'))
+        env.set("SPARK_HOME", join_path(self.prefix,
+                'spark-3.3.2-bin-hadoop3-scala2.13'))
 
     def install(self, spec, prefix):
-        spark_install_dir = join_path(prefix, 'spark-3.3.2-bin-hadoop3-scala2.13')
+        spark_install_dir = join_path(
+            prefix, 'spark-3.3.2-bin-hadoop3-scala2.13')
         install_tree(self.stage.source_path, spark_install_dir)
