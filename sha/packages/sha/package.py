@@ -32,9 +32,10 @@ class Sha(Package):
     git = "https://github.com/alpha-unito/Software-Heritage-Analytics"
     url = "https://github.com/alpha-unito/Software-Heritage-Analytics/raw/main/download/Sha_Package_Spack.tar.gz"
 
+#    version(
+ #       "1.2.4", sha256="44722fe396d797a2f3e9b7a28bb59503de9591c76843e992c5a9ceebf1eb48bf")
     version(
-        "1.2.4", sha256="44722fe396d797a2f3e9b7a28bb59503de9591c76843e992c5a9ceebf1eb48bf")
-
+        "1.2.4", sha256="e14dff30b18e1e9aa7eb9e97ad284451ded1f9e1ebfffe780a10e72cf964735d")
     depends_on("python", type='run')
     depends_on('py-requests', type='run')
     depends_on('py-numpy', type='run')
