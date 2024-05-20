@@ -1,0 +1,70 @@
+{
+  "projects": {
+    "c51bb03e1f5f51618baa764687676e2758d9f71e": {
+      "language_type": ""
+    },
+    "88fce77894acbab8bb825177abc166aef102a0c5": {
+      "language_type": ""
+    },
+    "cfeee390222ecdf4bf0227d1bfee35c94410ad69": {
+      "language_type": ""
+    },
+    "655f4582e692f0fc3667b3b668ad365ac3ab92ae": {
+      "language_type": ""
+    },
+    "6545e28b556bae3019b58001f14ed16220deaa14": {
+      "language_type": ""
+    },
+    "c43bdb1793dac151db60e6d05c74331f0617f8e8": {
+      "language_type": ""
+    },
+    "cb63efd3a0c7a3bfb120f0c3aca92fb8d2f0628f": {
+      "language_type": ""
+    },
+    "1d4731590099814afd893fa86767b00f7c9809c9": {
+      "language_type": ""
+    },
+    "8e59a43de9d427865c5d67fef39e9a50e44f07ce": {
+      "language_type": ""
+    },
+    "e8d336c942a4e459041997a192eefb2ee4fb876c": {
+      "language_type": ""
+    },
+    "e950a2c522706eca6ce024985218623a35d2c8e0": {
+      "language_type": ""
+    },
+    "87d8573251bf2fb2cd148d490a94994093ba7327": {
+      "language_type": ""
+    },
+    "0a5bf2626e3a7bfc99506d87dfd852bd4ebbed96": {
+      "language_type": ""
+    },
+    "75b9f4c242868c1902becaf8295b3a9be21f33b2": {
+      "language_type": ""
+    },
+    "8b5bbffc27ec1760c76ae8a5113ab1e7fb1bc5ac": {
+      "language_type": ""
+    },
+    "f9629dfb5c8843f004ad03239af570343134089e": {
+      "language_type": ""
+    },
+    "3e31fe4add48c5df39cc13674136de509252c1c2": {
+      "language_type": ""
+    },
+    "6e468519e8df2f1c6c0b2f25b2862b61cc4d3626": {
+      "language_type": ""
+    },
+    "4d3ecc4c355508eda03b5a9479b24d01d8c38901": {
+      "language_type": ""
+    },
+    "f16cf8b9123fcc03fa985285e97a46bbc2904eaa": {
+      "language_type": ""
+    }
+  },
+  "app": "licensectrl.jar",
+  "rules": {
+    "num_slave": 16,
+    "dstream_time": 2
+  },
+  "version": 1
+}
