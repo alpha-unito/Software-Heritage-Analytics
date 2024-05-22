@@ -1,7 +1,13 @@
 #!/bin/bash
 #
 # get environment variables
+# ----------------------- #
+ENABLE_CACHEMIRE=0
+CACHEMIRE_LD_PRELOAD_PATH=""      #TODO: fill with: "path"
 CACHEMIRE_DATA_DIR=~/Software-Heritage-Analytics/Example/CACHE/
+# ----------------------- #
+
+
 GLOBAL_RANK=$SLURM_PROCID
 CPUS=`grep -c ^processor /proc/cpuinfo`
 MEM=$((`grep MemTotal /proc/meminfo | awk '{print $2}'`/1000)) # seems to be in MB
@@ -25,8 +31,11 @@ then
     # then start the spark master node in the background
     $SPARK_HOME/sbin/start-master.sh -p 7077 -h $LOCAL_IP
 
-    echo "Run cachemire..."
-    nohup cachemire -d $CACHEMIRE_DATA_DIR > ca.log &
+    if [ $ENABLE_CACHEMIRE -eq 1 ]
+    then 
+        echo "Run cachemire... $ENABLE_CACHEMIRE"
+        nohup env  LD_PRELOAD=$CACHEMIRE_LD_PRELOAD_PATH cachemire -d $CACHEMIRE_DATA_DIR > ca.log &
+    fi
     echo "Run orchestrator"
     nohup orchestrator > or.log &
     mkdir logs
