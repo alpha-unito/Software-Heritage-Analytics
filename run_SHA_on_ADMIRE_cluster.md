@@ -74,6 +74,27 @@ cd Software-Heritage-Analytics/Cachemire/bin
 LD_PRELOD=yourpathtolib ./cachemire -d yourpathtodatastorage
 ```
 
+## ADMIRE AD-HOC filesystems usage
+The 'Cachemire' caching system is designed to seamlessly interface with various ad-hoc filesystems provided by Admire. The provided guide offers a comprehensive walkthrough for using Cachemire with Hercules, but it is equally applicable to other ad-hoc filesystems.
+Once installation and configuration of one of the three filesystems are complete, you can start Cachemire in one of the following ways, according to the chosen filesystem:
+
+### Hercules 
+[Git repository](https://gitlab.arcos.inf.uc3m.es/admire/hercules)
+```bash
+LD_PRELOAD=<install_path>libhercules_posix.so ./cachemire -d yourpathtodatastorage
+```
+
+### GekkoFS
+[Git repository](https://storage.bsc.es/gitlab/hpc/gekkofs)
+```bash
+LD_PRELOAD=<install_path>/lib64/libgkfs_intercept.so ./cachemire -d yourpathtodatastorage
+```
+
+### Expand
+[Git repository](https://github.com/xpn-arcos/xpn)
+```bash
+LD_PRELOAD=<install_path>/xpn/lib/xpn_bypass.so ./cachemire -d yourpathtodatastorage
+```
 
 ## Step 5: Configure and Run the SHA Script
 
